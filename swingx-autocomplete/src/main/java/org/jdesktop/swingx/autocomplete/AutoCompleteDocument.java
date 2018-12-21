@@ -288,6 +288,8 @@ public class AutoCompleteDocument implements Document {
         if (selecting) return;
         // insert the string into the document
         delegate.insertString(offs, str, a);
+        // skip lookup item when the IME is active
+        if (a != null && a.isDefined(StyleConstants.ComposedTextAttribute)) return;
         // lookup and select a matching item
         LookupResult lookupResult;
         String pattern = getText(0, getLength());
