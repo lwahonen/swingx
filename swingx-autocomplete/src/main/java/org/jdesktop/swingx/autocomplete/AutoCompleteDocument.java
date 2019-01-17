@@ -36,6 +36,7 @@ import javax.swing.text.Element;
 import javax.swing.text.PlainDocument;
 import javax.swing.text.Position;
 import javax.swing.text.Segment;
+import javax.swing.text.StyleConstants;
 
 import org.jdesktop.swingx.util.Contract;
 
@@ -555,5 +556,13 @@ public class AutoCompleteDocument implements Document {
      */
     public boolean isStrictMatching() {
         return strictMatching;
+    }
+
+    /**
+     * Returns whether the selection is being changed by auto completion.
+     * @return whether the selection is being changed by auto completion.
+     */
+    public boolean isSelecting() {
+        return selecting;
     }
 }
