@@ -373,7 +373,12 @@ public class AutoCompleteDocument implements Document {
 
         LookupResult lookupResult;
 
-        // first try: case sensitive
+        // first try: exactly match
+
+        lookupResult = lookupExactlyItem(selectedItem, pattern);
+        if (lookupResult != null) return lookupResult;
+
+        // second try: case sensitive
 
         lookupResult = lookupItem(pattern, EQUALS);
         if (lookupResult != null) return lookupResult;
@@ -384,7 +389,7 @@ public class AutoCompleteDocument implements Document {
         lookupResult = lookupItem(pattern, STARTS_WITH);
         if (lookupResult != null) return lookupResult;
 
-        // second try: ignore case
+        // third try: ignore case
 
         lookupResult = lookupItem(pattern, EQUALS_IGNORE_CASE);
         if (lookupResult != null) return lookupResult;
@@ -397,6 +402,22 @@ public class AutoCompleteDocument implements Document {
 
         // no item starts with the pattern => return null
         return new LookupResult(null, "");
+    }
+
+    private LookupResult lookupExactlyItem(Object item, String pattern) {
+        // matches currently selected item
+        if (item != null && pattern.equals(stringConverter.getPreferredStringForItem(item))) {
+            return new LookupResult(item, pattern);
+        }
+
+        // iterate over all items and return first exactly match
+        for (int i = 0, n = adaptor.getItemCount(); i < n; i++) {
+            Object currentItem = adaptor.getItem(i);
+            if (pattern.equals(stringConverter.getPreferredStringForItem(currentItem))) {
+                return new LookupResult(currentItem, pattern);
+            }
+        }
+        return null;
     }
 
     private LookupResult lookupOneItem(Object item, String pattern, Comparator<String> comparator) {
