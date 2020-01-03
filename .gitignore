@@ -1,0 +1,8 @@
+*/target
+
+# exlude Eclipse files
+.settings
+.project
+*/.settings
+*/.project
+*/.classpath
