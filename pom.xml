@@ -12,21 +12,13 @@
   <packaging>pom</packaging>
   <name>SwingX</name>
   <version>1.6.6-SNAPSHOT</version>
-  <url>http://www.swinglabs.org/</url>
-  <ciManagement>
-    <system>Hudson</system>
-    <url>http://swinglabs.org/hudson</url>
-  </ciManagement>
+  <url>https://github.com/Softec-Open-Source-Division/swingx</url>
   <licenses>
     <license>
       <name>Lesser General Public License (LGPL)</name>
       <url>http://www.gnu.org/copyleft/lesser.html</url>
     </license>
   </licenses>
-  <issueManagement>
-    <system>JIRA</system>
-    <url>http://java.net/jira/browse/SWINGX</url>
-  </issueManagement>
   <description>Contains extensions to the Swing GUI toolkit, including new and enhanced components that provide functionality commonly required by rich client applications.</description>
   <build>
     <plugins>
