@@ -4,6 +4,8 @@ Readme - SwingLabs SwingX Project
 SwingX is a library of components and utilities extending the Java Swing library. Originally published by SwingLabs,
 their site is now closed, and the project is available in a number of public clones.
 
+This fork is a (still cautious) update to Java 8.
+
 Building the Source
 ===================
 SwingX relies on Maven for controlling compilation, building docs, testing, etc. You can use our POM files to build the project, some IDEs can directly invoke Maven for you.
