@@ -38,6 +38,7 @@ import javax.swing.plaf.IconUIResource;
 import junit.framework.TestCase;
 
 import org.jdesktop.swingx.test.XTestUtils;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -64,6 +65,12 @@ public class JXHeaderTest extends TestCase {
 //---------------- testing icon property, similar to #925
 // except that it's not a property normally controlled by the ui defaults.
     
+	@BeforeClass
+    public static void setup() {
+        // to initialize the HeaderAddon
+        new JXHeader();
+    }
+	
     /**
      * Test that header's icon property set to default value, if any.
      */
@@ -561,12 +568,4 @@ public class JXHeaderTest extends TestCase {
         }
         return null;
     }
-
-    
-    @Override
-    protected void setUp() throws Exception {
-        // forcing load of headerAddon
-        new JXHeader();
-    }
-
 }
