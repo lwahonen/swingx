@@ -5,12 +5,7 @@
 package org.jdesktop.swingx;
 
 import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
 import java.util.logging.Logger;
 
 import org.junit.Test;
@@ -31,55 +26,10 @@ public class JXFrameTest extends InteractiveTestCase {
             return;
         }
         JXFrame compare = new JXFrame();
-        GraphicsConfiguration gc = new DummyGraphicsConfiguration(compare.getGraphicsConfiguration());
+        GraphicsConfiguration gc = compare.getGraphicsConfiguration();
         JXFrame frame = new JXFrame(gc);
         assertEquals(gc, frame.getGraphicsConfiguration());
         assertEquals(compare.getDefaultCloseOperation(), frame.getDefaultCloseOperation());
         assertEquals(compare.getTitle(), frame.getTitle());
-    }
-    
-    public static class DummyGraphicsConfiguration extends GraphicsConfiguration {
-        
-        GraphicsConfiguration delegate;
-        
-        public DummyGraphicsConfiguration(GraphicsConfiguration delegate) {
-            this.delegate = delegate;
-        }
-
-        @Override
-        public BufferedImage createCompatibleImage(int width, int height) {
-            return delegate.createCompatibleImage(width, height);
-        }
-
-        @Override
-        public Rectangle getBounds() {
-            return delegate.getBounds();
-        }
-
-        @Override
-        public ColorModel getColorModel() {
-            return delegate.getColorModel();
-        }
-
-        @Override
-        public ColorModel getColorModel(int transparency) {
-            return delegate.getColorModel(transparency);
-        }
-
-        @Override
-        public AffineTransform getDefaultTransform() {
-            return delegate.getDefaultTransform();
-        }
-
-        @Override
-        public GraphicsDevice getDevice() {
-            return delegate.getDevice();
-        }
-
-        @Override
-        public AffineTransform getNormalizingTransform() {
-            return delegate.getNormalizingTransform();
-        }
-        
-    }
+    }    
 }
