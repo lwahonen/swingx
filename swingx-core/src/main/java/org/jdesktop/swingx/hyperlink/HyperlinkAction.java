@@ -194,6 +194,13 @@ public class HyperlinkAction extends AbstractHyperlinkAction<URI> {
         }
         return visitor;
     }
+    
+    /**
+     * for testing
+     */
+    void setURIVisitor(URIVisitor visitor) {
+        this.visitor = visitor;
+    }
 
     /**
      * @return
@@ -208,7 +215,7 @@ public class HyperlinkAction extends AbstractHyperlinkAction<URI> {
      * different actions in HyperlinkAction.
      * 
      */
-    private abstract class URIVisitor {
+    abstract class URIVisitor {
         protected boolean desktopSupported = Desktop.isDesktopSupported();
         
         /**
