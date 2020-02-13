@@ -44,6 +44,7 @@ import org.jdesktop.swingx.decorator.ComponentAdapter;
 import org.jdesktop.swingx.decorator.HighlightPredicate;
 import org.jdesktop.swingx.renderer.HighlighterClientVisualCheck.FontHighlighter;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -216,19 +217,18 @@ public class TableRowHeightControllerTest extends InteractiveTestCase {
     public void testSetModelRewiresModelListeners() throws InterruptedException, InvocationTargetException {
         final int smallRowHeight = table.getRowHeight(1);
         final AbstractTableModel oldModel = (AbstractTableModel) table.getModel();
-        assertEquals("sanity: model listener installed", true, containsModelListener(oldModel));
+        assertTrue("sanity: model listener installed", containsModelListener(oldModel));
         final DefaultTableModel model = createTableModel(true);
         table.setModel(model);
         
         SwingUtilities.invokeAndWait(new Runnable() {
             @Override
             public void run() {
-                assertEquals("new model must be installed", true, containsModelListener(model));
-                assertEquals("oldModel must be released", false, containsModelListener(oldModel));
-                assertEquals(smallRowHeight, table.getRowHeight(0));
+                assertTrue("new model must be installed", containsModelListener(model));
+                assertFalse("oldModel must be released", containsModelListener(oldModel));
             }
         });
-        
+        assertEquals(smallRowHeight, table.getRowHeight(0));        
     }
 
     /**
