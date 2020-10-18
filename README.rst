@@ -1,8 +1,8 @@
 SwingLabs SwingX Project
 ======
 
-.. image:: https://travis-ci.org/Softec-Open-Source-Division/swingx.svg?branch=master
-    :target: https://travis-ci.org/Softec-Open-Source-Division/swingx
+.. image:: https://travis-ci.com/Softec-Open-Source-Division/swingx.svg?branch=master
+    :target: https://travis-ci.com/Softec-Open-Source-Division/swingx
 
 
 SwingX is a library of components and utilities extending the Java Swing library. Originally published by SwingLabs,
